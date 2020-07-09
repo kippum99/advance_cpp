@@ -107,15 +107,6 @@ bool ExcludeFromSubset::match(const string &s, Range &r) const {
 vector<RegexOperator *> parseRegex(const string &expr) {
     vector<RegexOperator *> operators;
 
-    for (char c : expr) {
-        if (c == '\\') {
-
-        }
-        if (c == '.') {
-            operators.push_back(new MatchAny{});
-        }
-    }
-
     int i = 0;
 
     while (i < expr.length()) {

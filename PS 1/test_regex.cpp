@@ -34,7 +34,7 @@ void test_simple_regex(TestContext &ctx) {
 
     r = find(regex, "dabcd");
     ctx.CHECK(r.start == 1 && r.end == 4);
-    
+
     ctx.result();
 
     ctx.DESC("Simple regex with match()");
@@ -43,16 +43,16 @@ void test_simple_regex(TestContext &ctx) {
 
     ctx.CHECK(!match(regex, ""));
     ctx.CHECK(!match(regex, "a"));
-    
+
     // These will successfully generate a "find", but it isn't a "match"
     // because it doesn't use the entire string.
     ctx.CHECK(!match(regex, "abcd"));
     ctx.CHECK(!match(regex, "dabc"));
     ctx.CHECK(!match(regex, "dabcd"));
-    
+
     ctx.result();
 
-    clearRegex(regex);
+    //clearregex(regex);
 }
 
 
@@ -81,7 +81,7 @@ void test_simple_wildcards(TestContext &ctx) {
 
     r = find(regex, "dazcd");
     ctx.CHECK(r.start == 1 && r.end == 4);
-    
+
     ctx.result();
 
     ctx.DESC("Simple wildcard regex with match()");
@@ -90,16 +90,16 @@ void test_simple_wildcards(TestContext &ctx) {
 
     ctx.CHECK(!match(regex, ""));
     ctx.CHECK(!match(regex, "a"));
-    
+
     // These will successfully generate a "find", but it isn't a "match"
     // because it doesn't use the entire string.
     ctx.CHECK(!match(regex, "abcd"));
     ctx.CHECK(!match(regex, "dabc"));
     ctx.CHECK(!match(regex, "dabcd"));
-    
+
     ctx.result();
 
-    clearRegex(regex);
+    //clearregex(regex);
 }
 
 
@@ -127,7 +127,7 @@ void test_char_classes(TestContext &ctx) {
 
     r = find(regex, "daecd");
     ctx.CHECK(r.start == 1 && r.end == 4);
-    
+
     ctx.result();
 
     ctx.DESC("Simple character-class regex with match()");
@@ -137,7 +137,7 @@ void test_char_classes(TestContext &ctx) {
 
     ctx.CHECK(!match(regex, ""));
     ctx.CHECK(!match(regex, "a"));
-    
+
     // These will successfully generate a "find", but it isn't a "match"
     // because it doesn't use the entire string.
     ctx.CHECK(!match(regex, "aaic"));
@@ -146,7 +146,7 @@ void test_char_classes(TestContext &ctx) {
 
     ctx.result();
 
-    clearRegex(regex);
+    //clearregex(regex);
 }
 
 
@@ -174,7 +174,7 @@ void test_inv_char_classes(TestContext &ctx) {
 
     r = find(regex, "damcd");
     ctx.CHECK(r.start == 1 && r.end == 4);
-    
+
     ctx.result();
 
     ctx.DESC("Inverted character-class regex with match()");
@@ -184,7 +184,7 @@ void test_inv_char_classes(TestContext &ctx) {
 
     ctx.CHECK(!match(regex, ""));
     ctx.CHECK(!match(regex, "a"));
-    
+
     // These will successfully generate a "find", but it isn't a "match"
     // because it doesn't use the entire string.
     ctx.CHECK(!match(regex, "aabc"));
@@ -193,7 +193,7 @@ void test_inv_char_classes(TestContext &ctx) {
 
     ctx.result();
 
-    clearRegex(regex);
+    //clearregex(regex);
 }
 
 
@@ -234,7 +234,7 @@ void test_kleene_star(TestContext &ctx) {
 
     r = find(regex, "damcd");
     ctx.CHECK(r.start == 1 && r.end == 4);
-    
+
     ctx.result();
 
     ctx.DESC("Kleene star * with match()");
@@ -245,7 +245,7 @@ void test_kleene_star(TestContext &ctx) {
 
     ctx.CHECK(!match(regex, ""));
     ctx.CHECK(!match(regex, "a"));
-    
+
     // These will successfully generate a "find", but it isn't a "match"
     // because it doesn't use the entire string.
     ctx.CHECK(!match(regex, "dac"));
@@ -254,7 +254,7 @@ void test_kleene_star(TestContext &ctx) {
 
     ctx.result();
 
-    clearRegex(regex);
+    //clearregex(regex);
 }
 
 
@@ -297,7 +297,7 @@ void test_plus(TestContext &ctx) {
 
     r = find(regex, "damcd");
     ctx.CHECK(r.start == 1 && r.end == 4);
-    
+
     ctx.result();
 
     ctx.DESC("Plus + with match()");
@@ -308,7 +308,7 @@ void test_plus(TestContext &ctx) {
 
     ctx.CHECK(!match(regex, ""));
     ctx.CHECK(!match(regex, "a"));
-    
+
     // These will successfully generate a "find", but it isn't a "match"
     // because it doesn't use the entire string.
     ctx.CHECK(!match(regex, "daasdfasdfasdfc"));
@@ -317,7 +317,7 @@ void test_plus(TestContext &ctx) {
 
     ctx.result();
 
-    clearRegex(regex);
+    //clearregex(regex);
 }
 
 
@@ -351,7 +351,7 @@ void test_optional(TestContext &ctx) {
 
     r = find(regex, "dabcd");
     ctx.CHECK(r.start == 1 && r.end == 4);
-    
+
     ctx.result();
 
     ctx.DESC("Optional operator ? with match()");
@@ -362,7 +362,7 @@ void test_optional(TestContext &ctx) {
 
     ctx.CHECK(!match(regex, ""));
     ctx.CHECK(!match(regex, "a"));
-    
+
     // These will successfully generate a "find", but it isn't a "match"
     // because it doesn't use the entire string.
     ctx.CHECK(!match(regex, "dac"));
@@ -372,7 +372,7 @@ void test_optional(TestContext &ctx) {
 
     ctx.result();
 
-    clearRegex(regex);
+    //clearregex(regex);
 }
 
 
@@ -443,14 +443,14 @@ void test_complex_regex(TestContext &ctx) {
     ctx.CHECK(!match(regex, "aaabbbbbbbbegjkk"));
 
     ctx.result();
-    
-    clearRegex(regex);
+
+    //clearregex(regex);
 }
 
 
 /*! This program is a simple test-suite for the Rational class. */
 int main() {
-  
+
     cout << "Testing regular expressions." << endl << endl;
 
     TestContext ctx(cout);
@@ -463,7 +463,7 @@ int main() {
     test_plus(ctx);
     test_optional(ctx);
     test_complex_regex(ctx);
-    
+
     // Return 0 if everything passed, nonzero if something failed.
     return !ctx.ok();
 }

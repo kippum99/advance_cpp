@@ -144,8 +144,6 @@ Range findAtIndex(vector<RegexOperator *> regex, const string &s, int start) {
             cout << "Match succeeded on range [" << matched.start << ", "
                  << matched.end << ")" << endl;
         }
-
-        // cout << string(78, '-') << endl;
     }
 
     return matched;
@@ -160,4 +158,14 @@ Range find(vector<RegexOperator *> regex, const string &s) {
     }
 
     return Range{-1, -1};
+}
+
+bool match(vector<RegexOperator *> regex, const string &s) {
+    Range r = find(regex, s);
+
+    if (r.start == 0 && r.end == s.length()) {
+        return true;
+    }
+
+    return false;
 }
